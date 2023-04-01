@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.abdosharaf.sleeptrackerrecycler.listScreen.ListFragment"
+        android:label="@string/sleep_nights_list"
+        tools:layout="@layout/fragment_list" >
+        <action
+            android:id="@+id/action_listFragment_to_qualityFragment"
+            app:destination="@id/qualityFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/qualityFragment"
+        android:name="com.abdosharaf.sleeptrackerrecycler.qualityScreen.QualityFragment"
+        android:label="@string/_sleep_quality"
+        tools:layout="@layout/fragment_quality" >
+        <argument
+            android:name="night_id"
+            app:argType="long" />
+    </fragment>
+</navigation>
