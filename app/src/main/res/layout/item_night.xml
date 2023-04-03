@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="night"
+            type="com.abdosharaf.sleeptrackerrecycler.database.SleepNight" />
+    </data>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,7 +34,8 @@
                 style="@style/item_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="12:05 Am" />
+                app:getTimeFormatted="@{night.startTime}"
+                tools:text="12:05 Am" />
 
         </LinearLayout>
 
@@ -45,7 +55,8 @@
                 style="@style/item_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="12:05 Am" />
+                app:getTimeFormatted="@{night.endTime}"
+                tools:text="12:05 Am" />
 
         </LinearLayout>
 
@@ -65,7 +76,8 @@
                 style="@style/item_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="2 days 5 hours 15 minutes" />
+                app:getTotalTime="@{night}"
+                tools:text="2 days 5 hours 15 minutes" />
 
         </LinearLayout>
 
@@ -85,7 +97,8 @@
                 style="@style/item_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Excellent" />
+                app:getQualityString="@{night.quality}"
+                tools:text="Excellent" />
 
         </LinearLayout>
 

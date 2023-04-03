@@ -2,8 +2,8 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="main_color">#2B4D66</color>
-    <color name="faces_icons">#2B4D66</color>
+    <color name="main_color">#6A95D6</color>
+    <color name="faces_icons">#6A95D6</color>
     <color name="dark_gray">#502D2F31</color>
     <color name="red">#B50028</color>
 </resources>

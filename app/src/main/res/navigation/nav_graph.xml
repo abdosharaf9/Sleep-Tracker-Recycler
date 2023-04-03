@@ -17,6 +17,9 @@
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"/>
+        <action
+            android:id="@+id/action_listFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/qualityFragment"
@@ -26,5 +29,14 @@
         <argument
             android:name="night_id"
             app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.abdosharaf.sleeptrackerrecycler.detailsScreen.DetailsFragment"
+        android:label="@string/night_details"
+        tools:layout="@layout/fragment_details">
+        <argument
+            android:name="night"
+            app:argType="com.abdosharaf.sleeptrackerrecycler.database.SleepNight" />
     </fragment>
 </navigation>

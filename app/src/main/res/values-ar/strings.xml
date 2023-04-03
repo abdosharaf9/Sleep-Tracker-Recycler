@@ -26,4 +26,6 @@
     <string name="change_language">تغيير اللغة</string>
     <string name="exit">الخروج</string>
     <string name="cleared">تم الحذف بنجاح</string>
+    <string name="night_details">تفاصيل الليلة</string>
+    <string name="back">العودة</string>
 </resources>

@@ -42,6 +42,7 @@ fun getTotalTime(startTime: Long, endTime: Long): String {
 
     var total = ""
 
+    // TODO: Translate these
     if (days > 0) {
         total += "$days Days "
     }

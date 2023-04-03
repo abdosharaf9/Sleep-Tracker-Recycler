@@ -18,8 +18,8 @@
         android:paddingEnd="@dimen/_16dp"
         tools:context=".listScreen.ListFragment">
 
-        <androidx.core.widget.NestedScrollView
-            android:id="@+id/nsv"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvNights"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/_8dp"
@@ -27,15 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="gone">
-
-            <LinearLayout
-                android:id="@+id/list"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical" />
-
-        </androidx.core.widget.NestedScrollView>
+            tools:listitem="@layout/item_night" />
 
         <LinearLayout
             android:id="@+id/emptyState"
@@ -48,7 +40,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible">
+            tools:visibility="gone">
 
             <ImageView
                 android:layout_width="300dp"

@@ -3,6 +3,7 @@ package com.abdosharaf.sleeptrackerrecycler.database
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 @Entity(tableName = "daily_sleep_nights_table")
 data class SleepNight(
@@ -18,4 +19,4 @@ data class SleepNight(
 
     @ColumnInfo(name = "quality")
     var quality: Int = -1
-)
+): Serializable

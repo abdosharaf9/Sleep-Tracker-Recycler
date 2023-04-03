@@ -27,4 +27,6 @@
     <string name="change_language">Change language</string>
     <string name="exit">Exit</string>
     <string name="cleared">Cleared successfully</string>
+    <string name="night_details">Night details</string>
+    <string name="back">Back</string>
 </resources>

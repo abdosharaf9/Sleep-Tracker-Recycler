@@ -1,19 +1,18 @@
 package com.abdosharaf.sleeptrackerrecycler.listScreen
 
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.abdosharaf.sleeptrackerrecycler.R
-import com.abdosharaf.sleeptrackerrecycler.database.SleepNight
 import com.abdosharaf.sleeptrackerrecycler.database.SleepNightsDatabase.Companion.getDatabase
 import com.abdosharaf.sleeptrackerrecycler.databinding.FragmentListBinding
-import com.abdosharaf.sleeptrackerrecycler.databinding.ItemCurrentBinding
-import com.abdosharaf.sleeptrackerrecycler.databinding.ItemNightBinding
-import com.abdosharaf.sleeptrackerrecycler.utils.getTime
-import com.abdosharaf.sleeptrackerrecycler.utils.getTotalTime
+import com.abdosharaf.sleeptrackerrecycler.utils.Constants.TAG
+import com.abdosharaf.sleeptrackerrecycler.utils.LangChanger.changeLang
 import com.google.android.material.snackbar.Snackbar
 
 class ListFragment : Fragment() {
@@ -32,6 +31,15 @@ class ListFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
+        // TODO: Animation does the problem of inflation
+//        binding.rvNights.itemAnimator = null
+        binding.rvNights.layoutManager = LinearLayoutManager(requireContext())
+
+        val adapter = SleepNightsAdapter { night ->
+            findNavController().navigate(ListFragmentDirections.actionListFragmentToDetailsFragment(night))
+        }
+        binding.rvNights.adapter = adapter
+
         // Go to quality screen when the user click stop tracking
         viewModel.navigateToQualityScreen.observe(viewLifecycleOwner) { id ->
             id?.let {
@@ -44,21 +52,15 @@ class ListFragment : Fragment() {
         viewModel.sleepNights.observe(viewLifecycleOwner) { nights ->
             binding.loader.isVisible = false
 
-            if(nights.isEmpty()){
+            // TODO: Check why the list isn't updated in Logs immediately
+            adapter.submitList(nights)
+
+            if(nights.isNullOrEmpty()){
                 binding.emptyState.isVisible = true
-                binding.nsv.isVisible = false
+                binding.rvNights.isVisible = false
             } else {
                 binding.emptyState.isVisible = false
-                binding.nsv.isVisible = true
-
-                binding.list.removeAllViews()
-                nights.forEach { night ->
-                    if (night.startTime == night.endTime) {
-                        addCurrentView(night)
-                    } else {
-                        addNightView(night)
-                    }
-                }
+                binding.rvNights.isVisible = true
             }
         }
 
@@ -79,36 +81,6 @@ class ListFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.initializeTonight()
-    }
-
-    // Inflate night item and pass the data to it
-    private fun addNightView(night: SleepNight) {
-        val view = ItemNightBinding.inflate(layoutInflater, binding.list, false)
-        view.tvStartTime.text = getTime(night.startTime)
-        view.tvEndTime.text = getTime(night.endTime)
-        view.tvTotalTime.text = getTotalTime(night.startTime, night.endTime)
-        view.tvSleepQuality.text = getQuality(night.quality)
-        binding.list.addView(view.root)
-    }
-
-    // Inflate tonight item and pass data to it
-    private fun addCurrentView(night: SleepNight) {
-        val view = ItemCurrentBinding.inflate(layoutInflater, binding.list, false)
-        view.tvStartTime.text = getTime(night.startTime)
-        binding.list.addView(view.root)
-    }
-
-    // Get quality string from the number
-    private fun getQuality(quality: Int): String {
-        return when(quality) {
-            0 -> getString(R.string.very_poor)
-            1 -> getString(R.string.poor)
-            2 -> getString(R.string.ok)
-            3 -> getString(R.string.good)
-            4 -> getString(R.string.very_good)
-            5 -> getString(R.string.excellent)
-            else -> "--"
-        }
     }
 
     // Inflate the options menu
