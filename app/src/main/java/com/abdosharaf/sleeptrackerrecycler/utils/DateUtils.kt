@@ -1,7 +1,9 @@
 package com.abdosharaf.sleeptrackerrecycler.utils
 
 import android.annotation.SuppressLint
+import android.content.res.Resources
 import android.text.format.DateUtils
+import com.abdosharaf.sleeptrackerrecycler.R
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -12,8 +14,8 @@ import java.util.*
  * @param date The date you need to format in millis
  * @return String value of the formatted date in this form "EEEE dd-MMM-yyyy 'at' hh:mm a".
  * */
-fun getTime(date: Long): String {
-    return SimpleDateFormat("EEEE dd-MMM-yyyy 'at' hh:mm a").format(date).toString()
+fun getTime(date: Long, res: Resources): String {
+    return SimpleDateFormat("EEEE dd-MMM-yyyy '${res.getString(R.string.at)}' hh:mm a").format(date).toString()
 }
 
 /**
@@ -24,7 +26,7 @@ fun getTime(date: Long): String {
  * @return String value of how much time between these two dates in this form: {d} Days {h} Hours
  * {m} Minutes {s} Seconds.
  * */
-fun getTotalTime(startTime: Long, endTime: Long): String {
+fun getTotalTime(startTime: Long, endTime: Long, res: Resources): String {
 
     var difference = endTime - startTime
 
@@ -42,18 +44,17 @@ fun getTotalTime(startTime: Long, endTime: Long): String {
 
     var total = ""
 
-    // TODO: Translate these
     if (days > 0) {
-        total += "$days Days "
+        total += "$days ${res.getString(R.string.days)} "
     }
     if (hours > 0) {
-        total += "$hours Hours "
+        total += "$hours ${res.getString(R.string.hours)} "
     }
     if (minutes > 0) {
-        total += "$minutes Minutes "
+        total += "$minutes ${res.getString(R.string.minutes)} "
     }
 
-    total += "$seconds Seconds"
+    total += "${seconds+1} ${res.getString(R.string.seconds)}"
 
     return total
 }

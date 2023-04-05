@@ -8,7 +8,7 @@ import com.abdosharaf.sleeptrackerrecycler.database.SleepNight
 
 @BindingAdapter("getTimeFormatted")
 fun TextView.getTimeFormatted(time: Long) {
-    this.text = getTime(time)
+    this.text = getTime(time, this.context.resources)
 }
 
 @BindingAdapter("getQualityString")
@@ -26,7 +26,7 @@ fun TextView.getQualityString(quality: Int) {
 
 @BindingAdapter("getTotalTime")
 fun TextView.getTotalTime(night: SleepNight) {
-    this.text = getTotalTime(night.startTime, night.endTime)
+    this.text = getTotalTime(night.startTime, night.endTime, this.context.resources)
 }
 
 @BindingAdapter("setImageQuality")

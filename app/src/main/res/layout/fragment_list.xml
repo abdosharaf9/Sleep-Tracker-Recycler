@@ -14,7 +14,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingStart="@dimen/_16dp"
-        android:paddingTop="@dimen/_16dp"
         android:paddingEnd="@dimen/_16dp"
         tools:context=".listScreen.ListFragment">
 
@@ -23,6 +22,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_marginBottom="@dimen/_8dp"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/_16dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toTopOf="@+id/btnStartTrack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +63,7 @@
             android:id="@+id/loader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/btnStartTrack"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -99,12 +101,11 @@
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnClear"
-            style="@style/clear_button"
+            style="@style/red_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/_16dp"
             android:enabled="@{viewModel.showClearButton}"
-            android:onClick="@{() -> viewModel.clearAll()}"
             android:text="@string/clear_all"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

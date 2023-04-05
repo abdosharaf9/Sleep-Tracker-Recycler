@@ -8,6 +8,10 @@
         <variable
             name="night"
             type="com.abdosharaf.sleeptrackerrecycler.database.SleepNight" />
+
+        <variable
+            name="viewModel"
+            type="com.abdosharaf.sleeptrackerrecycler.detailsScreen.DetailsViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -20,11 +24,18 @@
             android:id="@+id/ivSleepIcon"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:setImageQuality="@{night.quality}"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:setImageQuality="@{night.quality}"
             app:srcCompat="@drawable/ic_sleep_0" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.35" />
 
         <TextView
             android:id="@+id/tvDetailsQuality"
@@ -39,24 +50,79 @@
             tools:text="@string/excellent" />
 
         <TextView
-            android:id="@+id/tvDetailsTotalTime"
-            style="@style/label"
+            android:id="@+id/tvDetailsTotalTimeLabel"
+            style="@style/details_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:getTotalTime="@{night}"
-            app:layout_constraintBottom_toTopOf="@+id/btnBack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            android:text="@string/you_slept"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvDetailsQuality"
+            app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+
+        <TextView
+            android:id="@+id/tvDetailsTotalTime"
+            style="@style/details_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4dp"
+            app:getTotalTime="@{night}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvDetailsTotalTimeLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvDetailsTotalTimeLabel"
             tools:text="14 Hours 12 Minutes 10 Seconds" />
 
+        <TextView
+            android:id="@+id/tvDetailsStartTimeLabel"
+            style="@style/details_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:text="@string/start_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetailsTotalTime" />
+
+        <TextView
+            android:id="@+id/tvDetailsStartTime"
+            style="@style/details_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4dp"
+            app:getTimeFormatted="@{night.startTime}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvDetailsStartTimeLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvDetailsStartTimeLabel"
+            tools:text="Sunday 02-April-2023 at 12:30 am" />
+
+        <TextView
+            android:id="@+id/tvDetailsEndTimeLabel"
+            style="@style/details_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_16dp"
+            android:text="@string/end_date"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDetailsStartTime" />
+
+        <TextView
+            android:id="@+id/tvDetailsEndTime"
+            style="@style/details_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_4dp"
+            app:getTimeFormatted="@{night.endTime}"
+            app:layout_constraintBaseline_toBaselineOf="@+id/tvDetailsEndTimeLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/tvDetailsEndTimeLabel"
+            tools:text="Sunday 02-April-2023 at 12:30 am" />
+
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btnBack"
-            style="@style/main_button"
+            android:id="@+id/btnDelete"
+            style="@style/red_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/back"
+            android:text="@string/delete"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

@@ -7,8 +7,11 @@
     <dimen name="title_size">24sp</dimen>
     <dimen name="_2dp">2dp</dimen>
     <dimen name="label_text_size">16sp</dimen>
+    <dimen name="details_label_text_size">20sp</dimen>
+    <dimen name="details_text_size">16sp</dimen>
     <dimen name="_4dp">4dp</dimen>
     <dimen name="icon_size">64dp</dimen>
     <dimen name="item_text_size">14sp</dimen>
+    <dimen name="dialog_text_size">18sp</dimen>
     <dimen name="empty_state_text_size">24sp</dimen>
 </resources>

@@ -8,6 +8,12 @@
         android:icon="@drawable/language_svgrepo_com"
         app:showAsAction="ifRoom"/>-->
 
+    <!--<item
+        android:id="@+id/mi_layout"
+        android:title="@string/change_layout"
+        android:icon="@drawable/list_unordered_svgrepo_com"
+        app:showAsAction="ifRoom"/>-->
+
     <item
         android:id="@+id/mi_exit"
         android:title="@string/exit"

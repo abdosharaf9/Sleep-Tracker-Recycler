@@ -27,5 +27,15 @@
     <string name="exit">الخروج</string>
     <string name="cleared">تم الحذف بنجاح</string>
     <string name="night_details">تفاصيل الليلة</string>
-    <string name="back">العودة</string>
+    <string name="delete">حذف</string>
+    <string name="you_slept">مدة النوم:</string>
+    <string name="at">الساعة</string>
+    <string name="days">يوم</string>
+    <string name="hours">ساعة</string>
+    <string name="minutes">دقيقة</string>
+    <string name="seconds">ثانية</string>
+    <string name="want_delete_item">هل تريد حذف هذه الليلة؟</string>
+    <string name="cancel">إلغاء</string>
+    <string name="want_clear_all">هل تريد حذف جميع الليالى؟</string>
+    <string name="change_layout">تغيير تخطيط العناصر</string>
 </resources>

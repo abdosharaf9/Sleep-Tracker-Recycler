@@ -28,5 +28,15 @@
     <string name="exit">Exit</string>
     <string name="cleared">Cleared successfully</string>
     <string name="night_details">Night details</string>
-    <string name="back">Back</string>
+    <string name="delete">Delete</string>
+    <string name="you_slept">You slept:</string>
+    <string name="at">at</string>
+    <string name="days">Days</string>
+    <string name="hours">Hours</string>
+    <string name="minutes">Minutes</string>
+    <string name="seconds">Seconds</string>
+    <string name="want_delete_item">Do you want to delete this night?</string>
+    <string name="want_clear_all">Do you want to clear all the nights?</string>
+    <string name="cancel">Cancel</string>
+    <string name="change_layout">Change items layout</string>
 </resources>

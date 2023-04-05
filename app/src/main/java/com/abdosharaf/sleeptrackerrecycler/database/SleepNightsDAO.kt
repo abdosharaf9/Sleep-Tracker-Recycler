@@ -1,10 +1,7 @@
 package com.abdosharaf.sleeptrackerrecycler.database
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 
 @Dao
 interface SleepNightsDAO {
@@ -14,6 +11,9 @@ interface SleepNightsDAO {
 
     @Update
     suspend fun updateNight(night: SleepNight)
+
+    @Delete
+    suspend fun deleteNight(night: SleepNight)
 
     @Query("SELECT * from daily_sleep_nights_table WHERE id = :key")
     suspend fun getNight(key: Long): SleepNight?
